@@ -6,7 +6,14 @@ var request = new XMLHttpRequest();
 request.open('GET', 'https://arfp.eu/dataset/cards.json', true);
 request.onload = function() {
   if (this.status === 200) {
+    
       var cards = JSON.parse(this.responseText);
+      var arrItems =[];
+      arrItems = JSON.parse(this.responseText);
+      var maxAttack = getMax(cards, "attack");
+      //pour l'instant je teste getMax, ensuite je met en place la carte
+      console.log("Top Value name and victory number: " + maxAttack.name + " - " + maxAttack.victory);
+
       for(var i=0; i < cards.length; i++)
       {
           tableys.innerHTML += '<td>' + cards[i].id +'</td>' +
@@ -22,14 +29,14 @@ request.onload = function() {
           '<td>' + cards[i].victory + '</td>' +
           '<td>' + cards[i].defeat + '</td>' +
           '<td>' + cards[i].draw + '</td>';
-          var maxPpg = getMax(cards, "attack");
-          console.log("Top scorer: " + maxPpg.player + " - " + maxPpg.team);
+
          
       }
   }
 };
 request.send();
 
+// grâce à la fonction getMax je peux récupérer la valeur de mon choix (attaque, victoire.. etc)
 function getMax(arr, prop) {
   var max;
   for (var i=0 ; i<arr.length ; i++) {
@@ -38,6 +45,4 @@ function getMax(arr, prop) {
   }
   return max;
 }
-
-
 });
