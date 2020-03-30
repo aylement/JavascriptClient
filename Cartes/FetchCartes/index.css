@@ -1,0 +1,47 @@
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+
+  }
+th, td{
+    padding: 15px;
+    text-align: center;
+  }
+  tr {
+    border-bottom: 1px solid grey;
+
+  }
+thead {
+    background-color: lightgray;
+}
+th {
+    border: 0.5px solid black;
+}
+
+tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+
+.card {
+    position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.head {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  background-color: red;
+}
+.icone { 
+  grid-column: 1/3;
+  grid-row: 2/3;
+  background-color: black;
+}
+.values {
+  grid-column: 4;
+  grid-row: 2 / 3;
+  background-color: green;
+}    

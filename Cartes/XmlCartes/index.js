@@ -8,11 +8,21 @@ request.onload = function() {
   if (this.status === 200) {
     
       var cards = JSON.parse(this.responseText);
-      var arrItems =[];
-      arrItems = JSON.parse(this.responseText);
+      console.log(cards);
+
+      //au final pour passer aux exercices suivants je vais uniquement console.log les données des 4 cartes demandées
+      //attack
       var maxAttack = getMax(cards, "attack");
-      //pour l'instant je teste getMax, ensuite je met en place la carte
-      console.log("Top Value name and victory number: " + maxAttack.name + " - " + maxAttack.victory);
+      console.log("Card with the highest attack : id " + maxAttack.id + " - name " + maxAttack.name + " - played  " + maxAttack.played + " - victories " + maxAttack.victory + " - power " + maxAttack.mitigation + " - attack  " + maxAttack.attack + " - defense  " + maxAttack.armor);
+      //armor
+      var maxArmor = getMax(cards, "armor");
+      console.log("Card with the highest armor : id " + maxArmor.id + " - name " + maxArmor.name + " - played " + maxArmor.played + " - victories  " + maxArmor.victory + " - power " + maxArmor.mitigation + " - attack " + maxArmor.attack + " - defense  " + maxArmor.armor);
+      //played
+      var maxPlayed = getMax(cards, "played");
+      console.log("Most played card : id " + maxPlayed.id + " - name " + maxPlayed.name + " - played " + maxPlayed.played + " - victories  " + maxPlayed.victory + " - power " + maxPlayed.mitigation + " - attack  " + maxPlayed.attack + " -defense  " + maxPlayed.armor);
+      //victory
+      var maxVictories = getMax(cards, "victory");
+      console.log("Most victorious card : id " + maxVictories.id + " - name " + maxVictories.name + " - played " + maxVictories.played + " - victories  " + maxVictories.victory + " - power " + maxVictories.mitigation + " - attack  " + maxVictories.attack + " - defense " + maxVictories.armor);
 
       for(var i=0; i < cards.length; i++)
       {
