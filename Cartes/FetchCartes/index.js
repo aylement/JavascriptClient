@@ -4,9 +4,10 @@ window.addEventListener("DOMContentLoaded", function(event) {
 
     fetch('https://arfp.eu/dataset/value.json')
     .then(response => {
-        response.json()
-            .then(console.log);
-    });
+        if(response.ok){
+            response.json()
+           .then((cards)=>{
+            console.log(cards);
   //le code ne fonctionne pas et je me retrouve avec cette erreur "Blocage d’une requête multiorigines (Cross-Origin Request) : la politique « Same Origin » ne permet pas de consulter la ressource distante située sur https://arfp.eu/dataset/value.json. Raison : l’en-tête CORS « Access-Control-Allow-Origin » est manquant."
   // je n'ai pas accès au serveur apache alors impossible de régler ce problème
      //au final pour passer aux exercices suivants je vais uniquement console.log les données des 4 cartes demandées
@@ -41,18 +42,15 @@ window.addEventListener("DOMContentLoaded", function(event) {
          
       }
     
-  
-
-
-// grâce à la fonction getMax je peux récupérer la valeur de mon choix (attaque, victoire.. etc)
+    });
+}  
+    });
 function getMax(arr, prop) {
-  var max;
-  for (var i=0 ; i<arr.length ; i++) {
-      if (!max || parseInt(arr[i][prop]) > parseInt(max[prop]))
-          max = arr[i];
+    var max;
+    for (var i=0 ; i<arr.length ; i++) {
+        if (!max || parseInt(arr[i][prop]) > parseInt(max[prop]))
+            max = arr[i];
+    }
+    return max;
   }
-  return max;
-}
-
-
 });
